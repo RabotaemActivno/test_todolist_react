@@ -43,6 +43,7 @@
     ]
   },
   "devDependencies": {
-    "@faker-js/faker": "^8.0.2"
+    "@faker-js/faker": "^8.0.2",
+    "gh-pages": "^6.0.0"
   }
 }
