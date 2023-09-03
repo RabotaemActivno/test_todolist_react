@@ -11,17 +11,40 @@ function App() {
     axios
       .get(`https://jsonplaceholder.typicode.com/todos`)
       .then((res) => {
-        setData(res.data)
-        setQuantity(res.data.length)
+        setData(res.data);
+        setQuantity(res.data.length);
       })
       .catch((err) => console.log(err));
   }, []);
+
+  async function toggleCompleted(id: string, todoCompleted: boolean) {
+    try {
+      const updatedCompletedStatus = !todoCompleted;
+      await axios
+        .put(`https://jsonplaceholder.typicode.com/todos/${id}`, {
+          completed: updatedCompletedStatus,
+        })
+        .then((res) => {
+          const updatedData = data.map((item) =>
+            item.id === id
+              ? { ...item, completed: res.data.completed }
+              : item
+          );
+          setData(updatedData);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div className="app">
       <TheHeader quantity={quantity} />
       <div className="item_wrapper">
-        {data && data.map((item) => <Item key={item.id} todo={item} />)}
+        {data &&
+          data.map((item) => (
+            <Item key={item.id} toggleCompleted={toggleCompleted} todo={item} />
+          ))}
       </div>
     </div>
   );

@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useCallback, useMemo } from "react";
 import styles from "./item.module.scss";
 import avatarImg from "./Img.svg";
 import rectangle from "./Rectangle.svg";
 import { faker } from "@faker-js/faker";
 
 type Props = {
+  toggleCompleted: (id: string, completed: boolean) => void;
   todo: {
+    id: string;
     title: string;
     completed: boolean;
   };
@@ -13,9 +15,11 @@ type Props = {
 
 const generateRandomData = () => {
   const randomStartDate = faker.date.past();
-  const randomEndDate = faker.date.between({from: randomStartDate, to: new Date()});
+  const randomEndDate = faker.date.between({
+    from: randomStartDate,
+    to: new Date(),
+  });
   const options: Intl.DateTimeFormatOptions = {
-    // year: "numeric",
     month: "short",
     day: "numeric",
     hour: "2-digit",
@@ -39,14 +43,27 @@ const generateRandomData = () => {
   };
 };
 
-const Item = ({ todo }: Props) => {
-  const { formattedDateStart, randomDescription, randomTags, formattedDateEnd } =
-    generateRandomData();
+const Item = ({ todo, toggleCompleted }: Props) => {
+
+  
+
+  const {
+    formattedDateStart,
+    randomDescription,
+    randomTags,
+    formattedDateEnd,
+  } = useMemo(() => generateRandomData(), []);
+
+
   return (
     <div className={styles.item}>
       <div className={styles.todo_title}>
         <p>
-          <input type="checkbox" checked={todo.completed} />
+          <input
+            type="checkbox"
+            onChange={() => toggleCompleted(todo.id, todo.completed)}
+            checked={todo.completed}
+          />
           {todo.title}
         </p>
       </div>
