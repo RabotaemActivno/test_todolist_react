@@ -1,0 +1,48 @@
+.header {
+  display: flex;
+  padding: 0 4px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.flex_item_left {
+  color: #50b810;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%;
+}
+.flex_item_right {
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
+}
+.addButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: none;
+  background-color: #ebeef6;
+  color: #3d8fec;
+  font-weight: 500;
+  font-size: 20px;
+}
+.counter {
+  width: 30px;
+  height: 20px;
+  border: 1px solid #7b8aab;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%;
+  }
+}

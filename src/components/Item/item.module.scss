@@ -1,0 +1,92 @@
+.item {
+  width: 255px;
+  height: 158px;
+  padding: 10px;
+  border-radius: 7px;
+  box-shadow: 0px 1px 2px 0px #d0daeb, 0px 0px 2px 0px #eef4fe;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.todo_title {
+  display: flex;
+  align-items: flex-start;
+  p {
+    overflow: hidden;
+    color: #3d8fec;
+    text-overflow: ellipsis;
+    whitespace: nowrap;
+    font-family: Segoe UI;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%;
+    max-height: 3 * 1.3em;
+    input {
+      margin-right: 8px;
+      width: 16px;
+      height: 16px;
+      border: 2px solid #aab7d4;
+    }
+  }
+}
+.date {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%;
+  color: #50b810;
+  margin-bottom: 4px;
+}
+.description {
+  color: #555;
+  whitespace: nowrap;
+  font-family: Segoe UI;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tags {
+  display: flex;
+  gap: 4px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%;
+  .purple {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1px 6px;
+    color: #fff;
+    background-color: #B233A6;
+    border-radius: 4px;
+  }
+  .grey {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1px 6px;
+    color: #616C82;
+    background-color: #EBEEF6;
+    border-radius: 4px;
+    position: relative;
+  }
+}
+.rectangle {
+    position: absolute;
+    height: 18px;
+    right: -8px;
+}
