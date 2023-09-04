@@ -5,10 +5,22 @@ import Item from "./components/Item/index";
 import { useState, useEffect } from "react";
 import Modal from "./components/Modal";
 
+type InputType = {
+  title: string;
+  description: string;
+  date: number
+}
+
 function App() {
   const [activeModal, setActiveModal] = useState<boolean>(false)
   const [data, setData] = useState<any[]>([]);
   const [quantity, setQuantity] = useState<number>(0);
+  const [input, setInput] = useState<InputType>({
+    title: '',
+    description: '',
+    date: 0,
+  })
+
   useEffect(() => {
     axios
       .get(`https://jsonplaceholder.typicode.com/todos`)
