@@ -10,7 +10,17 @@ type Props = {
     id: string;
     title: string;
     completed: boolean;
+    date?: string;
+    description?: string;
   };
+};
+
+const options: Intl.DateTimeFormatOptions = {
+  month: "short",
+  day: "numeric",
+  hour: "2-digit",
+  minute: "2-digit",
+  hour12: true,
 };
 
 const generateRandomData = () => {
@@ -19,41 +29,30 @@ const generateRandomData = () => {
     from: randomStartDate,
     to: new Date(),
   });
-  const options: Intl.DateTimeFormatOptions = {
-    month: "short",
-    day: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: true,
-  };
-  const formattedDateStart = new Intl.DateTimeFormat("en-US", options).format(
-    randomStartDate
-  );
-  const formattedDateEnd = new Intl.DateTimeFormat("en-US", options).format(
-    randomEndDate
-  );
   const randomDescription = faker.lorem.sentence();
   const randomTags = [faker.lorem.word(), faker.lorem.word()];
 
   return {
-    formattedDateStart,
-    formattedDateEnd,
+    randomStartDate,
+    randomEndDate,
     randomDescription,
     randomTags,
   };
 };
 
+const formatDate = (dateOrString?: string | Date) => {
+  if (dateOrString) {
+    const date =
+      typeof dateOrString === "string" ? new Date(dateOrString) : dateOrString;
+    return new Intl.DateTimeFormat("en-US", options).format(date);
+  }
+  const currentDate = new Date();
+  return new Intl.DateTimeFormat("en-US", options).format(currentDate);
+};
+
 const Item = ({ todo, toggleCompleted }: Props) => {
-
-  
-
-  const {
-    formattedDateStart,
-    randomDescription,
-    randomTags,
-    formattedDateEnd,
-  } = useMemo(() => generateRandomData(), []);
-
+  const { randomStartDate, randomDescription, randomTags, randomEndDate } =
+    useMemo(() => generateRandomData(), []);
 
   return (
     <div className={styles.item}>
@@ -69,10 +68,16 @@ const Item = ({ todo, toggleCompleted }: Props) => {
       </div>
       <div className={styles.content}>
         <div className={styles.date}>
-          <span className={styles.data_start}>{formattedDateStart}</span>
-          <span className={styles.data_finish}>{formattedDateEnd}</span>
+          <span className={styles.data_start}>
+            {todo.date ? formatDate(new Date()) : formatDate(randomStartDate)}
+          </span>
+          <span className={styles.data_finish}>
+            {todo.date ? formatDate(todo.date) : formatDate(randomEndDate)}
+          </span>
         </div>
-        <div className={styles.description}>{randomDescription}</div>
+        <div className={styles.description}>
+          {todo.description ? todo.description : randomDescription}
+        </div>
       </div>
       <div className={styles.footer}>
         <div className={styles.tags}>

@@ -4,22 +4,12 @@ import TheHeader from "./components/Header/index";
 import Item from "./components/Item/index";
 import { useState, useEffect } from "react";
 import Modal from "./components/Modal";
-
-type InputType = {
-  title: string;
-  description: string;
-  date: number
-}
+import { InputType as NewTodoType } from "./components/Modal";
 
 function App() {
-  const [activeModal, setActiveModal] = useState<boolean>(false)
+  const [activeModal, setActiveModal] = useState<boolean>(false);
   const [data, setData] = useState<any[]>([]);
   const [quantity, setQuantity] = useState<number>(0);
-  const [input, setInput] = useState<InputType>({
-    title: '',
-    description: '',
-    date: 0,
-  })
 
   useEffect(() => {
     axios
@@ -40,9 +30,7 @@ function App() {
         })
         .then((res) => {
           const updatedData = data.map((item) =>
-            item.id === id
-              ? { ...item, completed: res.data.completed }
-              : item
+            item.id === id ? { ...item, completed: res.data.completed } : item
           );
           setData(updatedData);
         });
@@ -51,9 +39,31 @@ function App() {
     }
   }
 
+  async function addTodo(newTodo: NewTodoType) {
+    try {
+      await axios
+        .post("https://jsonplaceholder.typicode.com/todos", {
+          newTodo,
+        })
+        .then((res) => {
+          const newData: NewTodoType[] = [res.data.newTodo, ...data]
+          setQuantity(newData.length)
+          console.log(res.data);
+          
+          setData(newData)
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
     <div className="app">
-      <Modal setActiveModal={setActiveModal} activeModal={activeModal}/>
+      <Modal
+        setActiveModal={setActiveModal}
+        activeModal={activeModal}
+        addTodo={addTodo}
+      />
       <TheHeader quantity={quantity} setActiveModal={setActiveModal} />
       <div className="item_wrapper">
         {data &&

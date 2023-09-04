@@ -4,15 +4,16 @@ import styles from "./modal.module.scss";
 type Props = {
   activeModal: boolean;
   setActiveModal: (flag: boolean) => void;
+  addTodo: (newTodo: InputType) => void
 };
 
-type InputType = {
+export type InputType = {
   title: string;
   description: string;
   date: string;
 };
 
-const Modal = ({ activeModal, setActiveModal }: Props) => {
+const Modal = ({ activeModal, setActiveModal, addTodo }: Props) => {
   
   const [errorField, setErrorField] = useState<boolean>(false);
   const [input, setInput] = useState<InputType>({
@@ -41,11 +42,12 @@ const Modal = ({ activeModal, setActiveModal }: Props) => {
       [fieldName]: e.target.value,
     }));
   };
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (input.title && input.description && input.date) {
-      console.log(input);
+      await addTodo(input)
       setActiveModal(false);
+      setInput({ title: "", description: "", date: "" })
     } else {
       setErrorField(true);
     }
