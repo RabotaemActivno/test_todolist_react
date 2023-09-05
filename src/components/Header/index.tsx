@@ -1,4 +1,3 @@
-import { type } from "os";
 import styles from "./header.module.scss";
 
 type Props = {
