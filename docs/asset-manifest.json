@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/rabotaemactivno.github.io/test_todolist_react/static/css/main.935bc7d9.css",
-    "main.js": "/rabotaemactivno.github.io/test_todolist_react/static/js/main.7caf932c.js",
-    "static/media/Img.svg": "/rabotaemactivno.github.io/test_todolist_react/static/media/Img.cea26772ba59d5836a44fdb208e4f49b.svg",
-    "index.html": "/rabotaemactivno.github.io/test_todolist_react/index.html",
-    "static/media/Rectangle.svg": "/rabotaemactivno.github.io/test_todolist_react/static/media/Rectangle.f895c82f87bdba09d8c97d2278b088e3.svg",
-    "main.935bc7d9.css.map": "/rabotaemactivno.github.io/test_todolist_react/static/css/main.935bc7d9.css.map",
-    "main.7caf932c.js.map": "/rabotaemactivno.github.io/test_todolist_react/static/js/main.7caf932c.js.map"
+    "main.css": "/test_todolist_react/static/css/main.935bc7d9.css",
+    "main.js": "/test_todolist_react/static/js/main.5c990268.js",
+    "static/media/Img.svg": "/test_todolist_react/static/media/Img.cea26772ba59d5836a44fdb208e4f49b.svg",
+    "index.html": "/test_todolist_react/index.html",
+    "static/media/Rectangle.svg": "/test_todolist_react/static/media/Rectangle.f895c82f87bdba09d8c97d2278b088e3.svg",
+    "main.935bc7d9.css.map": "/test_todolist_react/static/css/main.935bc7d9.css.map",
+    "main.5c990268.js.map": "/test_todolist_react/static/js/main.5c990268.js.map"
   },
   "entrypoints": [
     "static/css/main.935bc7d9.css",
-    "static/js/main.7caf932c.js"
+    "static/js/main.5c990268.js"
   ]
 }
