@@ -1,7 +1,7 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useMemo } from "react";
 import styles from "./item.module.scss";
-import avatarImg from "./Img.svg";
-import rectangle from "./Rectangle.svg";
+import avatarImg from "../../assets/Img.svg";
+import rectangle from "../../assets/Rectangle.svg";
 import { faker } from "@faker-js/faker";
 
 type Props = {

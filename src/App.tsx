@@ -47,9 +47,7 @@ function App() {
         })
         .then((res) => {
           const newData: NewTodoType[] = [res.data.newTodo, ...data]
-          setQuantity(newData.length)
-          console.log(res.data);
-          
+          setQuantity(newData.length)          
           setData(newData)
         });
     } catch (err) {
